@@ -13,12 +13,10 @@ cd salty-bot
 npm install
 ```   
 
-#### Add config.js
-```js
-// In config.js at root level
-module.exports = {
-    token: "YOUR BOT'S TOKEN",
-};
+#### Add Token to Environment
+```env
+# In .env file at root
+TOKEN=YOUR_BOTS_TOKEN
 ```   
 
 
