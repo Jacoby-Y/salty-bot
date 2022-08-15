@@ -7,22 +7,26 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('eightball')
-		.setDescription('Ask my ball and it shall tell')
+		.setDescription('Ask something like: "Should I rob that bank?"')
         .addStringOption(i => i.setName("question").setDescription("Ask away").setRequired(true)),
 	async execute(interaction) {
-        // let UserProfile = await UserSave.findOne({ userID: interaction.user.id, guildID: interaction.guild.id });
-        // if(!UserProfile) {
-        //     UserProfile = await new UserSave({
-        //         _id: mongoose.Types.ObjectId(),
-        //         userID: interaction.user.id,
-        //         guildID: interaction.guild.id,
-        //         bank: 0,
-        //         wallet: 0,
-        //     }).save();
-        // };
 
         let question = interaction.options.getString("question");
 
+        const answers = [
+            "Mmmm... perhaps",
+            "Nah",
+            "Ohhh yeaaah",
+            "Cringe moment",
+            "Anyway, y'all seen the new season of Stranger Things?",
+            "Become a dark spirit",
+            "Crab time",
+            "That's a good question!",
+            "Didn't ask",
+            "Literally nobody asked, lol",
+        ]
+
+        // Snatched from a demo
         let embed = new EmbedBuilder()
             .setColor(0x000000)
             .setTitle('Eight Ball')
@@ -38,7 +42,7 @@ module.exports = {
             // )
             .addFields(
                 { name: 'Your question', value: `${question}` },
-                { name: 'My answer', value: `You'd be sooo cringe for that, lol` },
+                { name: 'My answer', value: answers[Math.floor(Math.random() * answers.length)] },
             )
             // .setImage('https://i.imgur.com/AfFp7pu.png')
             .setTimestamp()
