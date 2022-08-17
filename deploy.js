@@ -1,28 +1,22 @@
+require("dotenv").config();
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const fs = require('fs');
 
-const commands = [];
 const commandFiles = fs.readdirSync('./cmd').filter(file => file.endsWith('.js'));
+const commands = [];
 
 // Place your client and guild ids here
 const clientId = '710867565349699667';
-
-/* Guilds
-	Coby's Bots: 772606187384471594
-	Salty Falls: 450096954446184451
-*/
-
-const guildId = '450096954446184451';
 
 for (const file of commandFiles) {
 	const command = require(`./cmd/${file}`);
 	commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
-
-(async () => {
+const applyCommands = async (guildId)=>{
+	const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
+	
 	try {
 		console.log('Started refreshing application (/) commands.');
 
@@ -35,4 +29,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 	} catch (error) {
 		console.error(error);
 	}
-})();
+}
+
+/* Coby's Bots */ applyCommands("772606187384471594");
+// /* Salty Falls */ applyCommands("450096954446184451");

@@ -46,7 +46,7 @@ module.exports = {
             )
             // .setImage('https://i.imgur.com/AfFp7pu.png')
             .setTimestamp()
-            .setFooter({ text: '/help for more commands' });
+            // .setFooter({ text: '/help for more commands' });
 
         await interaction.reply({ embeds: [embed] });
 	},
