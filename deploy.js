@@ -31,5 +31,5 @@ const applyCommands = async (guildId)=>{
 	}
 }
 
-/* Coby's Bots */ applyCommands("772606187384471594");
-// /* Salty Falls */ applyCommands("450096954446184451");
+// /* Coby's Bots */ applyCommands("772606187384471594");
+/* Salty Falls */ applyCommands("450096954446184451");
